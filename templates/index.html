@@ -90,10 +90,6 @@
 
             })
 
-
-
-
-
         }
 
         function showArticles() {
@@ -102,11 +98,13 @@
                 url: '/post',
                 data: {},
                 success: function (response) {
+                    console.log(response)
                     let articles = response['all_articles'];
                     for (let i = 0; i < articles.length; i++) {
                         let idx = articles[i]['idx'];
                         let title = articles[i]['title'];
                         let reg_date = articles[i]['reg_date'];
+
 
                         let temp_html = `<tr>
                                              <th scope="col" class="idx">${idx}</th>

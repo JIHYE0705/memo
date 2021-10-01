@@ -12,11 +12,11 @@ db = client.dbStock
 def index():
     return render_template('index.html')
 
-global idx
+
 @app.route('/post', methods=['POST'])
 def save_post():
     now = datetime.datetime.now()
-
+    idx = 0
     title_receive = request.form['title_give']
     content_receive = request.form['content_give']
     reg_date = now.strftime('%Y-%m-%d %H:%M:%S')
@@ -39,7 +39,7 @@ def save_post():
 @app.route('/post', methods=['GET'])
 def get_post():
     articles = list(db.article.find({}, {'_id':False}))
-    return {"all_articles": articles}
+    return {'all_articles': articles}
 
 
 @app.route('/post', methods=['DELETE'])
